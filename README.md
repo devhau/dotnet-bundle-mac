@@ -1,4 +1,4 @@
-# dotnet-bundle
+# dotnet-bundle-mac
 
 Command-line interface tools for bundling .NET Core projects into MacOS applications (.app)
 

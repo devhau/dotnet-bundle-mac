@@ -1,7 +1,7 @@
 ﻿using Microsoft.Build.Framework;
 using Microsoft.Build.Utilities;
 
-namespace Dotnet.Bundle
+namespace MacBundle.DotNet
 {
     public interface IBundleAppTask
     {

@@ -2,12 +2,12 @@
 
   <PropertyGroup>
     <TaskFolder>netstandard2.0</TaskFolder>
-    <TaskAssembly>$(MSBuildThisFileDirectory)..\tasks\$(TaskFolder)\DotNet.Bundle.dll</TaskAssembly>
+    <TaskAssembly>$(MSBuildThisFileDirectory)..\tasks\$(TaskFolder)\MacBundle.DotNet.dll</TaskAssembly>
   </PropertyGroup>
 
-  <UsingTask TaskName="DotNet.Bundle.BundleAppTask" AssemblyFile="$(TaskAssembly)" />
+  <UsingTask TaskName="MacBundle.DotNet.BundleAppTask" AssemblyFile="$(TaskAssembly)" />
   
-  <Target Name="BundleApp" DependsOnTargets="Publish">
+  <Target Name="BundleAppMac" DependsOnTargets="Publish">
     
     <PropertyGroup>
 

@@ -24,19 +24,19 @@ namespace Tests.Helper
                 throw new System.Exception(msg);
             }
         }
-        public static Dictionary<string, t> loadJsonDictonary<t>(string path, string testData = "")
+        public static Dictionary<string, T> loadJsonDictonary<T>(string path, string testData = "")
         {
             var dataDir = Directory.GetCurrentDirectory() + rootPath;
             if (string.IsNullOrWhiteSpace(testData))
             {
                 // set equal to t type
-                testData = typeof(t).Name.ToString();
+                testData = typeof(T).Name.ToString();
             }
 
             if (File.Exists(dataDir + path + testData + ".json"))
             {
                 var fileContents = File.ReadAllText(dataDir + path + testData + ".json");
-                var result = JsonConvert.DeserializeObject<Dictionary<string, t>>(fileContents);
+                var result = JsonConvert.DeserializeObject<Dictionary<string, T>>(fileContents);
                 return result;
             }
             else

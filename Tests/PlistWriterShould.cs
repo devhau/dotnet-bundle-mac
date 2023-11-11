@@ -1,6 +1,6 @@
 using System;
 using System.IO;
-using Dotnet.Bundle;
+using MacBundle.DotNet;
 using Moq;
 using Tests.Helper;
 using Xunit;

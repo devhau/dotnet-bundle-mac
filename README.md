@@ -4,23 +4,24 @@ Command-line interface tools for bundling .NET Core projects into MacOS applicat
 
 ### Installation
 
-Install MSBuild task via NuGet package: `Dotnet.Bundle`
+Install MSBuild task via NuGet package: `MacBundle.DotNet`
 
-[![NuGet](https://img.shields.io/nuget/v/Dotnet.Bundle.svg)](https://www.nuget.org/packages/Dotnet.Bundle/)
+[![NuGet](https://img.shields.io/nuget/v/MacBundle.DotNet.svg)](https://www.nuget.org/packages/MacBundle.DotNet/)
 
 ```
-<PackageReference Include="Dotnet.Bundle" Version="*" />
+<PackageReference Include="MacBundle.DotNet" Version="*" />
 ```
+dotnet nuget push MacBundle.DotNet.0.9.14.nupkg --api-key oy2f66dodqki5sconpgqcv2w4qmjrz6ura7fnc66v2vioe --source https://api.nuget.org/v3/index.json
 
 ### Development
 * `cd TestBundle`
-* run `dotnet msbuild -t:BundleApp -p:RuntimeIdentifier=osx-x64`
+* run `dotnet msbuild -t:BundleAppMac -p:RuntimeIdentifier=osx-x64`
 * verify `Build/Debug/net5.0/osx-x64/publish` contents
 
 ### Using the tool
 
 ```
-dotnet msbuild -t:BundleApp -p:RuntimeIdentifier=osx-x64 [-p: ...]
+dotnet msbuild -t:BundleAppMac -p:RuntimeIdentifier=osx-x64 [-p: ...]
 ```
 
 ### Properties

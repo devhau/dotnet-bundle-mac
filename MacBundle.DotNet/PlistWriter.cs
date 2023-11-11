@@ -5,7 +5,7 @@ using System.Linq;
 using System.Xml;
 using Microsoft.Build.Framework;
 
-namespace Dotnet.Bundle
+namespace MacBundle.DotNet
 {
     public class PlistWriter
     {

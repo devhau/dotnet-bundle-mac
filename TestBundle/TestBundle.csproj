@@ -3,7 +3,7 @@
   <PropertyGroup>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputPath>..\Build\$(Configuration)\</OutputPath>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <PlatformTarget>x64</PlatformTarget>
     <RuntimeIdentifiers>osx-x64</RuntimeIdentifiers>
     <RestoreSources>$(RestoreSources);..\\Dotnet.Bundle\\bin\\$(Configuration)\\</RestoreSources>
@@ -21,7 +21,7 @@
         <Command>
           <type>AfterBuild</type>
           <command>dotnet msbuild -t:BundleApp -p:RuntimeIdentifier=osx-x64 -p:Configuration=$(Configuration)</command>
-         </Command>
+        </Command>
       </CustomCommands>
     </CustomCommands>
   </PropertyGroup>
@@ -37,17 +37,43 @@
     <CFBundleSignature>4242</CFBundleSignature>
     <NSRequiresAquaSystemAppearance>false</NSRequiresAquaSystemAppearance>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <CustomCommands>
+      <CustomCommands>
+        <Command>
+          <type>BeforeBuild</type>
+          <command>dotnet pack ..\\Dotnet.Bundle\\ -p:Configuration=Debug -p:PackageVersion=0.9.14</command>
+        </Command>
+        <Command>
+          <type>BeforeBuild</type>
+          <command>dotnet restore</command>
+        </Command>
+        <Command>
+          <type>AfterBuild</type>
+          <command>dotnet msbuild -t:BundleApp -p:RuntimeIdentifier=osx-x64 -p:Configuration=Debug</command>
+        </Command>
+      </CustomCommands>
+    </CustomCommands>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <CustomCommands>
+      <CustomCommands>
+        <Command>
+          <type>BeforeBuild</type>
+          <command>dotnet pack ..\\Dotnet.Bundle\\ -p:Configuration=Release -p:PackageVersion=0.9.14</command>
+        </Command>
+        <Command>
+          <type>BeforeBuild</type>
+          <command>dotnet restore</command>
+        </Command>
+        <Command>
+          <type>AfterBuild</type>
+          <command>dotnet msbuild -t:BundleApp -p:RuntimeIdentifier=osx-x64 -p:Configuration=Release</command>
+        </Command>
+      </CustomCommands>
+    </CustomCommands>
+  </PropertyGroup>
   <ItemGroup>
-    <CFBundleURLTypes Include="dummy">
-        <CFBundleURLName>TestApp URL</CFBundleURLName>
-        <CFBundleURLSchemes>testappurl;testappurl://</CFBundleURLSchemes>
-    </CFBundleURLTypes>
-    <CFBundleURLTypes Include="dummy">
-        <CFBundleURLName>TestApp URL2</CFBundleURLName>
-        <CFBundleURLSchemes>test://</CFBundleURLSchemes>
-    </CFBundleURLTypes>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Dotnet.Bundle" Version="$(DotnetBundleTestVersion)" />
+    <ProjectReference Include="..\MacBundle.DotNet.Bundle\MacBundle.DotNet.csproj" />
   </ItemGroup>
 </Project>

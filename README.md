@@ -11,7 +11,6 @@ Install MSBuild task via NuGet package: `MacBundle.DotNet`
 ```
 <PackageReference Include="MacBundle.DotNet" Version="*" />
 ```
-dotnet nuget push MacBundle.DotNet.0.9.14.nupkg --api-key oy2f66dodqki5sconpgqcv2w4qmjrz6ura7fnc66v2vioe --source https://api.nuget.org/v3/index.json
 
 ### Development
 * `cd TestBundle`
